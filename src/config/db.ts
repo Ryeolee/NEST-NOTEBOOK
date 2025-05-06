@@ -7,7 +7,7 @@ export const getDbConfig = (configService: ConfigService) => ({
   user: configService.get<string>('database.user'),
   password: configService.get<string>('database.password'),
   database: configService.get<string>('database.schema'),
-  connectTimeout: 2,
+  connectTimeout: 3,
 });
 
 let pool: mysql.Pool;
@@ -16,8 +16,8 @@ export const initDbPool = (configService: ConfigService) => {
   if (!pool) {
     pool = mysql.createPool({
       ...getDbConfig(configService),
-      waitForConnections: true,
       connectionLimit: 2,
+      idleTimeout: 1000,
     });
   }
   return pool;

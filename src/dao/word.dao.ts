@@ -7,9 +7,62 @@ export const getWords = async (configService: ConfigService) => {
   //   await connection.connect();
   try {
     const pool = getDbPool();
-    const query = `select * from WORDS limit 100`;
-    const [result] = await pool.query(query);
-    return result;
+
+    const query = `select * from WORDS limit 10000`;
+    // const [result] = await pool.query(query);
+    // console.log(result);
+    // return result;
+    const [a] = await Promise.all([
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+    ]);
   } catch (error) {
     console.log(error);
   } finally {
