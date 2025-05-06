@@ -62,6 +62,18 @@ export const getWords = async (configService: ConfigService) => {
       pool.query(query),
       pool.query(query),
       pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
+      pool.query(query),
     ]);
   } catch (error) {
     console.log(error);

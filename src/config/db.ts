@@ -7,7 +7,7 @@ export const getDbConfig = (configService: ConfigService) => ({
   user: configService.get<string>('database.user'),
   password: configService.get<string>('database.password'),
   database: configService.get<string>('database.schema'),
-  connectTimeout: 3,
+  connectTimeout: 3000, // db 연결 타임아웃
 });
 
 let pool: mysql.Pool;
@@ -16,13 +16,14 @@ export const initDbPool = (configService: ConfigService) => {
   if (!pool) {
     pool = mysql.createPool({
       ...getDbConfig(configService),
-      connectionLimit: 2,
-      idleTimeout: 1000,
+      waitForConnections: true,
+      connectionLimit: 2, // 커넥션 풀 크기
+      idleTimeout: 20000, // 커넥션의 유지 시간
     });
   }
   return pool;
 };
-
+// ❌ 커넥션 풀에서 커넥션을 얻는 데 대기할 수 있는 최대 시간 설정은 없음
 export const getDbPool = () => {
   if (!pool) throw new Error('DB pool is not initialized.');
   return pool;
