@@ -5,8 +5,8 @@ import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class AppService {
   constructor(private readonly configService: ConfigService) {}
-  async getWords(): Promise<string> {
+  async getWords() {
     const words = await getWords(this.configService);
-    return 'Hello World!';
+    return words;
   }
 }
